@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package rover;
+
+service GroundControl {
+    rpc GetMap (RoverRequest) returns (MapResponse) {}
+    rpc GetCommands (RoverRequest) returns (stream CommandResponse) {}
+    rpc GetMineSerialNumber (RoverRequest) returns (MineSerialResponse) {}
+}
+
+message RoverRequest {
+    int32 rover_id = 1;
+}
+
+message MapResponse {
+    repeated string map = 1;
+}
+
+message CommandResponse {
+    string command = 1;
+}
+
+message MineSerialResponse {
+    string serial_number = 1;
+}
