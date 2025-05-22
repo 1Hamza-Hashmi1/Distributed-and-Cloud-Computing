@@ -1,0 +1,15 @@
+pyproject.toml
+setup.py
+water_quality.proto
+water_quality_pb2.py
+water_quality_pb2_grpc.py
+core/__init__.py
+core/client.py
+core/sensor.py
+core/server.py
+protobuf/__init__.py
+water_quality.egg-info/PKG-INFO
+water_quality.egg-info/SOURCES.txt
+water_quality.egg-info/dependency_links.txt
+water_quality.egg-info/requires.txt
+water_quality.egg-info/top_level.txt

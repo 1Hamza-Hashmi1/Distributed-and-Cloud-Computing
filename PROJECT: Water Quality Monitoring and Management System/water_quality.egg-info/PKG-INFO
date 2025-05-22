@@ -1,0 +1,6 @@
+Metadata-Version: 2.4
+Name: water_quality
+Version: 0.1
+Requires-Dist: grpcio
+Requires-Dist: pika
+Dynamic: requires-dist

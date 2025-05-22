@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package waterquality;
+
+// Message representing the data quality of a station
+message QualityData {
+    float pH = 1;
+    float turbidity = 2;
+    float pollutants = 3;
+}
+
+// Request from a client to get station data
+message StationRequest {
+    string station_id = 1;
+}
+
+// Response with station data
+message StationResponse {
+    string station_id = 1;
+    float pH = 2;
+    float turbidity = 3;
+    float pollutants = 4;
+}
+
+// Message for neighbor relationships
+message NeighborList {
+    string station_id = 1;
+    repeated string neighbors = 2;
+}
+
+// Request to report an issue
+message IssueReport {
+    string station_id = 1;
+    string issue_type = 2;
+    double timestamp = 3;
+}
+
+// Status response
+message StatusResponse {
+    string message = 1;
+    bool success = 2;
+}
+
+// Request to add a neighbor
+message AddNeighbourRequest {
+    string station_id = 1;
+    string neighbour_id = 2;
+}
+
+// Notification to neighbors
+message NeighbourNotification {
+    string station_id = 1;
+    string issue_type = 2;
+}
+
+// Request to register a station
+message RegisterStationRequest {
+    string station_id = 1;
+}
+
+// Response for registration
+message RegisterStationResponse {
+    string message = 1;
+    bool success = 2;
+}
+
+// The service definition
+service WaterControlCenter {
+    // Get quality data for a station
+    rpc GetQualityData(StationRequest) returns (StationResponse);
+
+    // Report an issue
+    rpc ReportIssue(IssueReport) returns (StatusResponse);
+
+    // Add a neighbor station
+    rpc AddNeighbour(AddNeighbourRequest) returns (StatusResponse);
+
+    // Notify neighbors of an issue
+    rpc NotifyNeighbours(NeighbourNotification) returns (StatusResponse);
+
+    // Register a new station
+    rpc RegisterStation(RegisterStationRequest) returns (RegisterStationResponse);
+
+    // Get list of neighbors (NEW)
+    rpc GetNeighbors(StationRequest) returns (NeighborList);
+}

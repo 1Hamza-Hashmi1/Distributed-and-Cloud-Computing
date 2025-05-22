@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quality Monitoring System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <header>
+            <h1>Water Quality Monitoring System</h1>
+            <div class="status-indicator" id="connection-status">Disconnected</div>
+        </header>
+
+        <div class="controls">
+            <button id="toggle-neighbors">Toggle Neighbors</button>
+            <button id="toggle-connections">Toggle Connections</button>
+            <button id="add-neighbor">Add Neighbor</button>
+        </div>
+
+        <div class="main-content">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="data-panel">
+                <div class="station-list">
+                    <h2>Monitoring Stations</h2>
+                    <ul id="station-list">
+                        <!-- Stations will be dynamically inserted here -->
+                    </ul>
+                </div>
+
+                <div class="metrics-display">
+                    <h2>Current Metrics</h2>
+                    <div class="metric" id="ph-value">
+                        <label>pH Level:</label>
+                        <span class="value">-</span>
+                    </div>
+                    <div class="metric" id="turbidity-value">
+                        <label>Turbidity (NTU):</label>
+                        <span class="value">-</span>
+                    </div>
+                    <div class="metric" id="pollutants-value">
+                        <label>Pollutants (ppm):</label>
+                        <span class="value">-</span>
+                    </div>
+                    <div class="metric" id="status-value">
+                        <label>Status:</label>
+                        <span class="value">-</span>
+                    </div>
+                </div>
+
+                <div class="sensor-status-panel">
+                    <h2>Sensor Status</h2>
+                    <div id="sensor-status-container">
+                        <div class="sensor-status placeholder">
+                            <span class="sensor-id">No sensors connected</span>
+                            <span class="status">-</span>
+                            <span class="timestamp">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alerts-panel">
+                    <h2>Recent Alerts</h2>
+                    <div id="alerts-container">
+                        <!-- Alerts will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="/static/script.js"></script>
+</body>
+</html>
