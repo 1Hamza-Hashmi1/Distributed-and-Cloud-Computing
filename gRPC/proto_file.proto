@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+// The greeting service definition.
+service MyGreeter {
+    rpc GetMap (Empty) returns (MapInfo) {}
+    rpc GetCommands (RoverID) returns (Commands) {}
+    rpc GetMineSerialNum (MineLocation) returns (SerialNum) {}
+    rpc NotifyServer (BotMessage) returns (Empty) {}
+    rpc MinePin (RoverInfo) returns (Empty) {}
+}
+
+message Empty {}
+
+message MapInfo {
+    int32 row = 1;
+    int32 col = 2;
+    message Row {
+        repeated int32 mine_val = 1;
+    }
+    repeated Row map_row = 3;
+}
+
+message RoverID {
+    string id = 1;
+}
+
+message Commands {
+    string commands = 1;
+}
+
+message MineLocation {
+    int32 row = 1;
+    int32 col = 2;
+}
+
+message SerialNum {
+    string serialNum = 1;
+}
+
+message BotStatus {
+    bool status = 1;
+}
+
+message RoverInfo {
+    string pin_num = 1;
+    string rover_id = 2;
+    string row = 3;
+    string col = 4;
+}
+
+message BotMessage {
+    string _message = 1;
+}
